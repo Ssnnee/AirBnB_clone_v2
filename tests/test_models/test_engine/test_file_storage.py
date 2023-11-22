@@ -112,8 +112,9 @@ class test_fileStorage(unittest.TestCase):
     def test_do_create_with_params(self):
         """ Test object creation with parameters """
         cnsl = HBNBCommand()
-        cnsl.do_create('BaseModel name="Etape_Ya_Souka" number=903')
+        cnsl.do_create('BaseModel name="Etape_Ya_Souka" number=903 random=89')
         new_instance_id, new_instance = next(iter(storage.all().items()))
         self.assertEqual(new_instance.__class__.__name__, 'BaseModel')
         self.assertEqual(new_instance.name, "Etape Ya Souka")
         self.assertEqual(new_instance.number, 903)
+        self.assertEqual(new_instance.random, 89)
