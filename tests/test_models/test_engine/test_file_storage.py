@@ -4,6 +4,7 @@ import unittest
 from models.base_model import BaseModel
 from models import storage
 import os
+from console import HBNBCommand
 
 
 class test_fileStorage(unittest.TestCase):
@@ -107,3 +108,12 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
+
+    def test_do_create_with_params(self):
+        """ Test object creation with parameters """
+        cnsl = HBNBCommand()
+        cnsl.do_create('BaseModel name="Etape_Ya_Souka" number=903')
+        new_instance_id, new_instance = next(iter(storage.all().items()))
+        self.assertEqual(new_instance.__class__.__name__, 'BaseModel')
+        self.assertEqual(new_instance.name, "Etape Ya Souka")
+        self.assertEqual(new_instance.number, 903)
