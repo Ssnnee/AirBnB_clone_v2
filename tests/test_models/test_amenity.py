@@ -17,3 +17,9 @@ class test_Amenity(test_basemodel):
         """ """
         new = self.value()
         self.assertEqual(type(new.name), str)
+
+    def test_default_attributes(self):
+        """This method test de default attributes of Amenity class"""
+        amenity = Amenity()
+        self.assertEqual(amenity.name, "")
+
