@@ -1,5 +1,5 @@
 -- Prepares a MySQL server for the project
--- Should be run as root user
+-- Should be run or pipe as root user
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
 CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
 GRANT ALL PRIVILEGES ON `hbnb_dev_db`.* TO 'hbnb_dev'@'localhost';
