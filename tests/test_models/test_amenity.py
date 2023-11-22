@@ -22,4 +22,3 @@ class test_Amenity(test_basemodel):
         """This method test de default attributes of Amenity class"""
         amenity = Amenity()
         self.assertEqual(amenity.name, "")
-
