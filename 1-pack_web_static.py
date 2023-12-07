@@ -11,5 +11,9 @@ def do_pack():
 
     date = datetime.now()
     archive_name = "versions/web_static_{}.tgz".format(date)
+    try:
+        local("tar -cvzf {} web_static".format(archive_name))
+        return archive_name
+    except:
+        return None
 
-    local("tar -cvzf {} web_static".format(archive_name))
