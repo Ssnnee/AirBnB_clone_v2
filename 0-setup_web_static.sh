@@ -17,25 +17,23 @@ ln -sf /data/web_static/releases/test/ /data/web_static/current
 
 chown -R ubuntu:ubuntu /data/
 
-bash -c 'cat << EOF > /etc/nginx/sites-available/web_static
+bash -c 'cat << EOF > /etc/nginx/sites-available/default
 server {
-	listen 80;
+	listen 80 default_server;
+    listen [::]:80 default_server;
 
 	server_name samuelnandi.tech www.samuelnandi.tech;
 
-    root /data/web_static/;
+    root /var/www/html;
     index index.html index.htm index.nginx-debian.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
 
 	location /hbnb_static/ {
 		alias /data/web_static/current/;
+        index index.html index.htm ;
 	}
 }
 EOF'
 
-ln -sf /etc/nginx/sites-available/web_static /etc/nginx/sites-enabled/
+# ln -sf /etc/nginx/sites-available/web_static /etc/nginx/sites-enabled/
 
 systemctl restart nginx
